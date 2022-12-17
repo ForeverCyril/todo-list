@@ -18,10 +18,11 @@ mysql -e "FLUSH PRIVILEGES;"
 
 echo "DB ready!"
 
-echo "server start"
+echo "starting nginx"
+nginx
+
+echo "starting server"
 
 java -Djava.net.preferIPv4Stack=true -jar /todo-api.jar &
-
-nginx
 
 exec "$@"

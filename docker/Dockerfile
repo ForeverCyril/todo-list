@@ -1,7 +1,5 @@
 FROM debian:11.5-slim
 
-# Install dependence software
-
 ENV MYSQL_HOST=localhost
 ENV MYSQL_PORT=3306
 ENV MYSQL_DATABASE=todo
@@ -33,6 +31,7 @@ RUN  \
       mysql-community-client  \
       nginx \
       &&  \
+    apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     # init database
     groupadd -r mysql && useradd -r -g mysql mysql && \
@@ -45,5 +44,5 @@ COPY rootfs/ /
 EXPOSE 80
 
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["/bin/sh"]
+CMD ["/bin/bash"]
 
