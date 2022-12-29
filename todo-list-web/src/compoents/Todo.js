@@ -43,6 +43,8 @@ export default function Todo(){
                 text: input, done: false, createTime: cur_time, id: uuid,  syncFinish: false
             }]);
 
+            setInput('');
+
             let real_id = await todo.addTask(input, cur_time);
             let mod = [...curList.current];
             for(const i = mod.length-1; i>=0; i--){
